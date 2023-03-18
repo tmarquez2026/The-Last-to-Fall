@@ -7,10 +7,23 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Staatliches&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <title>The Last to Fall</title>
     <style>
         main {
             margin-top: 80px;
+        }
+        body {
+          height: 100vmin;
+        }
+        #disableaccess {
+            padding: 50px;
+            border: 5px solid #4b3b2e;
+            background-color: #ceb294;
+            width:80%;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 5px 10px rgb(0 0 0 / 0.2);
         }
         article {
             padding: 50px;
@@ -46,6 +59,9 @@
           -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
           transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
+        .none {
+          display: none;
+        }
 
         #info:hover {
           -webkit-transform: scale(1.05, 1.05);
@@ -66,6 +82,16 @@
         h1{
           font-size: 25px;
           color: #4d2709; 
+        }
+        #head {
+          margin-left: auto;
+          margin-right: auto;
+          text-align: center;
+          font-family: 'Staatliches', cursive;
+          width: 100%;
+          padding-bottom: 20px;
+          color: #4d2709;
+          font-size: 10vw;
         }
         header {
           margin-left: auto;
@@ -93,7 +119,7 @@
           transition: 1.5s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
         .likod {
-          transform: perspective(1000px) rotateY(180deg);
+          transform: perspective(120px) rotateY(180deg);
           
         }
         .likod.flipped {
@@ -112,8 +138,14 @@
           font-size: 18px;
         }
     </style>
+    
   </head>
   <body>
+    <div id="disableaccess" class="none">
+      <div id="head">
+        This page is not available on this device, please check it on pc. Thank you
+      </div>
+    </div>
     <main id="big">
     <article id="front" class="harap">
       <header>
@@ -165,5 +197,10 @@
         back.classList.toggle('flipped')
     }
     btn.addEventListener('click', handleFlip)
+    if ($(window).width() < 960) {
+        $('#big article').addClass("none");	
+        $('aside').addClass("none");	
+        $('#disableaccess').removeClass("none");	
+    }
   </script>
 </html>
